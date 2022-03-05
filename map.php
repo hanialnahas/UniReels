@@ -18,7 +18,7 @@
   <title>Unireels</title>
 </head>
 <body class="generalBody">
-    <?php include('db_connect.php'); include('navbar.php'); displayNavbar()?>
+    <?php include('db_connect.php'); include('navbar.php'); displayNavbar("Titles")?>
     
 
     <nav class="container" style="padding-top: 80px">

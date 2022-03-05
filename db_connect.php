@@ -1,8 +1,8 @@
 <?php
-define('HOST', 'localhost');
-define('USERNAME', 'root');
-define('PASSWORD', '');
-define('DB_NAME', 'unireels_test');
+define('HOST', ''); // Enter your database host
+define('USERNAME', ''); // Enter your database username
+define('PASSWORD', ''); // Enter your database password
+define('DB_NAME', ''); // Enter your database name
 
 $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DB_NAME);
 if(!$conn) {
