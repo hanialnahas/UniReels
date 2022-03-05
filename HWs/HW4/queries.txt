@@ -1,0 +1,17 @@
+SELECT firstName, lastName, name, role, date FROM awarded INNER JOIN person ON awarded.actorID = person.id INNER JOIN award ON awarded.awardID = award.id;
+
+SELECT studioName, COUNT(mainTitle) AS number_of_movies FROM title INNER JOIN studio ON title.studio_id = studio.id GROUP BY studioName;
+
+SELECT * FROM person WHERE firstName = "chris";
+
+SELECT mainTitle, description FROM appeared_in INNER JOIN person ON appeared_in.actorID = person.id INNER JOIN title ON appeared_in.titleID = title.id WHERE firstName = "samuel" AND lastName LIKE "%Jackson%";
+
+SELECT mainTitle, imdb_rating FROM title ORDER BY imdb_rating DESC;
+
+SELECT title, airDate FROM episodes INNER JOIN series ON episodes.seriesID = series.titleID INNER JOIN title ON series.titleID = title.id WHERE mainTitle LIKE "Game of Thrones";
+
+SELECT mainTitle, COUNT(firstName) AS num_of_actors FROM appeared_in INNER JOIN person ON appeared_in.actorID = person.id INNER JOIN title ON appeared_in.titleID = title.id GROUP BY mainTitle HAVING num_of_actors > 3;
+
+SELECT mainTitle, studioName FROM title INNER JOIN studio ON title.studio_id = studio.id;
+
+SELECT firstName, lastName, description FROM appeared_in INNER JOIN person ON appeared_in.actorID = person.id INNER JOIN title ON appeared_in.titleID = title.id WHERE mainTitle LIKE "%The Dark Knight%";

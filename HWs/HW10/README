@@ -1,0 +1,8 @@
+
+Test autocomplete page can be found at testAutocomplete.html
+
+added auto complete functionality in three pages:
+
+1 - http://clabsql.clamv.jacobs-university.de/~halnahas/index.php (for titles)
+2 - http://clabsql.clamv.jacobs-university.de/~halnahas/searchActor.php (for actors)
+3 - http://clabsql.clamv.jacobs-university.de/~halnahas/searchStudio.php (for studios)

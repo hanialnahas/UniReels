@@ -1,0 +1,27 @@
+CREATE TABLE studio (id INT NOT NULL AUTO_INCREMENT, studioName VARCHAR(255) NOT NULL, location VARCHAR(255), PRIMARY KEY (id));
+
+CREATE TABLE title (id INT NOT NULL AUTO_INCREMENT, mainTitle VARCHAR(255) NOT NULL, releaseDate YEAR, budget INT, ageRating CHAR(10), shortDescription VARCHAR(255), studio_id INT NOT NULL, FOREIGN KEY (studio_id) REFERENCES studio(id), PRIMARY KEY (id));
+
+CREATE TABLE movie (titleID INT NOT NULL, runTime INT, boxOffice INT, FOREIGN KEY (titleID) REFERENCES title(id), PRIMARY KEY (titleID));
+
+CREATE TABLE series (titleID INT NOT NULL, numberOfEpisodes INT, endDate DATE, FOREIGN KEY (titleID) REFERENCES title(id), PRIMARY KEY(titleID));
+
+CREATE TABLE episodes (episodeID INT NOT NULL AUTO_INCREMENT, seriesID INT NOT NULL, title VARCHAR(255) NOT NULL, duration INT, airDate DATE,episodeNum INT, seasonNum INT, FOREIGN KEY (seriesID) REFERENCES series(titleID), PRIMARY KEY(episodeID, seriesID));
+
+CREATE TABLE person (id INT NOT NULL AUTO_INCREMENT, firstName VARCHAR(255) NOT NULL, lastName VARCHAR(255), gender CHAR(1), PRIMARY KEY (id));
+
+CREATE TABLE cast (personID INT NOT NULL, birthDate DATE, deathDate DATE, FOREIGN KEY (personID) REFERENCES person(id), PRIMARY KEY (personID));
+
+CREATE TABLE crew (personID INT NOT NULL, profession VARCHAR(255), FOREIGN KEY (personID) REFERENCES person(id), PRIMARY KEY (personID));
+
+CREATE TABLE award (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(255) NOT NULL, PRIMARY KEY (id));
+
+CREATE TABLE awarded (actorID INT NOT NULL, awardID INT NOT NULL, date YEAR, FOREIGN KEY (actorID) REFERENCES person(id), FOREIGN KEY (awardID) REFERENCES award(id), PRIMARY KEY (actorID, awardID, date));
+
+CREATE TABLE appeared_in (titleID INT NOT NULL, actorID INT NOT NULL, description VARCHAR(255), FOREIGN KEY (titleID) REFERENCES title(id), FOREIGN KEY (actorID) REFERENCES person(id), PRIMARY KEY (titleID, actorID));
+
+CREATE TABLE account (id INT NOT NULL AUTO_INCREMENT, username VARCHAR(255) NOT NULL, passowrd VARCHAR(255) NOT NULL, email VARCHAR(255), PRIMARY KEY (id));
+
+CREATE TABLE admin (accountID INT NOT NULL, confirmationCode CHAR(5), FOREIGN KEY (accountID) REFERENCES account(id), PRIMARY KEY (accountID));
+
+CREATE TABLE user (accountID INT NOT NULL, firstName VARCHAR(255), lastName VARCHAR(255), joinedSince DATE, FOREIGN KEY (accountID) REFERENCES account(id), PRIMARY KEY (accountID));
